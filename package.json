@@ -11,10 +11,15 @@
   },
   "dependencies": {
     "@notifee/react-native": "^9.1.8",
+    "@react-native-community/netinfo": "^11.4.1",
+    "@react-native-firebase/app": "^21.7.1",
+    "@react-native-firebase/messaging": "^21.7.1",
+    "@react-navigation/native": "^7.0.14",
     "quran-kemenag": "^1.0.12",
     "react": "18.3.1",
     "react-native": "0.76.1",
     "react-native-gesture-handler": "^2.21.2",
+    "react-native-permissions": "^5.2.5",
     "react-native-reanimated": "^3.16.6"
   },
   "devDependencies": {

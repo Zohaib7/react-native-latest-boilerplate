@@ -13,6 +13,7 @@ import {Surah} from 'quran-kemenag/dist/intefaces';
 import {GestureHandlerRootView} from 'react-native-gesture-handler';
 import {AnimatedList} from './AnimatedList';
 import notifee from '@notifee/react-native';
+import { getFCM } from './notificationsHelper';
 
 function App(): React.JSX.Element {
   const [listOfSurah, setListOfsurah]: [
@@ -22,6 +23,8 @@ function App(): React.JSX.Element {
 
   React.useEffect(() => {
     getData();
+    const fcmToken = getFCM()
+    console.log(fcmToken, "fcmTokenfcmTokenfcmToken")
   }, []);
 
   const getData = async () => {
@@ -48,6 +51,7 @@ function App(): React.JSX.Element {
       body: 'Main body content of the notification',
       android: {
         channelId,
+        // asForegroundService: true,
         // smallIcon: 'name-of-a-small-icon', // optional, defaults to 'ic_launcher'.
         // pressAction is needed if you want the notification to open the app when pressed
         pressAction: {

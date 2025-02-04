@@ -2,6 +2,7 @@ import React, { useEffect } from 'react';
 import { Alert } from 'react-native';
 import messaging from '@react-native-firebase/messaging';
 import notifee from '@notifee/react-native';
+import { checkNotificationPermissionStatus } from './checkPermission';
 
 export const channelId = 'missedAlarm';
 export const channelName = 'Missed Alarms';
@@ -9,29 +10,23 @@ export const channelName = 'Missed Alarms';
 export const FGSChannelId = 'foodOrderTracking';
 export const FGSChannelName = 'Food Order Delivery info';
 
-export const checkNotificationPermissionStatus = (): Promise<boolean> => {
-    return new Promise(async (resolve, reject) => {
-      return messaging()
-        .hasPermission()
-        .then(enabled => {
-          let granted =
-            enabled === messaging.AuthorizationStatus.AUTHORIZED ||
-            enabled === messaging.AuthorizationStatus.PROVISIONAL;
-          return resolve(granted);
-        })
-        .catch(error => reject(error));
-    });
-  };
+export const getFCM = async () => {
+  const token = await messaging().getToken();
+  return token;
+}
+
 export const setNotificationsHandler = async () => {
     let granted = await checkNotificationPermissionStatus();
     if(!granted) return;
     await messaging().registerDeviceForRemoteMessages();
     const token = await messaging().getToken();
-    await passTokenToBackend(token);
+
+    console.log(token, "tokentokentokentoken")
+    // await passTokenToBackend(token);
 
     messaging().onTokenRefresh((token) => {
       //call api and pass the token
-      passTokenToBackend(token)
+      // passTokenToBackend(token)
     });
     
     notifee.isChannelCreated(channelId).then(isCreated => {

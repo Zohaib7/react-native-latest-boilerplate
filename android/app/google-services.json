@@ -1,0 +1,29 @@
+{
+  "project_info": {
+    "project_number": "479565348049",
+    "project_id": "adroit-metric-326815",
+    "storage_bucket": "adroit-metric-326815.firebasestorage.app"
+  },
+  "client": [
+    {
+      "client_info": {
+        "mobilesdk_app_id": "1:479565348049:android:2997f8ee9fe1be62ded9f0",
+        "android_client_info": {
+          "package_name": "com.myapp"
+        }
+      },
+      "oauth_client": [],
+      "api_key": [
+        {
+          "current_key": "AIzaSyC9dAIJ3Dr1HMdfhau4CXe6v5a6Qng9qME"
+        }
+      ],
+      "services": {
+        "appinvite_service": {
+          "other_platform_oauth_client": []
+        }
+      }
+    }
+  ],
+  "configuration_version": "1"
+}
